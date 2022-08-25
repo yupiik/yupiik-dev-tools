@@ -9,3 +9,43 @@ Simple application with a set of developer tools.
 npm i
 npm run build:all
 ----
+
+
+Then you can run the application using (ensure to hava Java >= 17 in your path):
+
+[source,bash]
+----
+cd out/yupiik-dev-tools-linux-x64/
+./yupiik-dev-tools
+----
+
+A `custom-operations.json` can be added to this folder (root of the distribution) to define custom JSON-Logic operations:
+
+[source,json]
+----
+{
+  "jsonLogics": [
+    {
+      "name": "hello-world",
+      "description": "A simple custom operation based on JSON-Logic",
+      "parameters": [
+        {
+          "type": "STRING", // or NUMBER or BOOLEAN
+          "name": "name",
+          "required": true,
+          "documentation": "The name to greet"
+        }
+      ],
+      "jsonLogic": {
+        "cat": [
+          "Hello ",
+          {
+            "var": "name" // injected from parameters
+          },
+          "!"
+        ]
+      }
+    }
+  ]
+}
+----
