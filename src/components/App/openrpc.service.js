@@ -44,7 +44,9 @@ export default data => {
         indexedMethods: methods.reduce((a, i) => ({ ...a, [i.name]: i }), {}),
         indexedSchemas: Object
             .keys(schemas)
-            .filter(name => !name.startsWith('io_yupiik_uship_jsonrpc_core_openrpc_') && name !== 'io_yupiik_uship_backbone_johnzon_jsonschema_Schema')
+            .filter(name => !name.startsWith('io_yupiik_uship_jsonrpc_core_openrpc_') &&
+                name !== 'io_yupiik_uship_backbone_johnzon_jsonschema_Schema' &&
+                !name.startsWith('io-yupiik-tools-dev-jsonrpc-internal'))
             .reduce((a, name) => ({ ...a, [name]: schemas[name] }), {}),
     };
 };

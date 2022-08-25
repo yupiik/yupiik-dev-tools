@@ -27,7 +27,7 @@ import static java.util.Optional.ofNullable;
 
 @JsonRpc
 @ApplicationScoped
-@UiMetadata(rootLabel = "Base64", commandPrefix = "base64-")
+@UiMetadata(rootLabel = "Encoding", commandPrefix = "base64-")
 public class Base64 {
     @JsonRpcMethod(name = "base64-encode", documentation = "Enables to encode a string in base64.")
     public String encode(@JsonRpcParam(documentation = "Base64 mode (URL, URL_NO_PADDING, DEFAULT)") final Base64EncodingMode mode,

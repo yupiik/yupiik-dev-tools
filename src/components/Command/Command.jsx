@@ -25,7 +25,7 @@ const JsonResult = ({
     return (
         <div>
             <pre>
-                <code>{JSON.stringify(data, null, 2)}</code>
+                <code>{typeof data === 'string' ? data : JSON.stringify(data, null, 2)}</code>
             </pre>
         </div>
     )

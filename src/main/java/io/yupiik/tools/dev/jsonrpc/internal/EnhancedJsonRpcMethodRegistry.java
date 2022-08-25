@@ -16,7 +16,9 @@
 package io.yupiik.tools.dev.jsonrpc.internal;
 
 import io.yupiik.tools.dev.api.UiMetadata;
+import io.yupiik.tools.dev.api.UiWidget;
 import io.yupiik.tools.dev.configuration.CustomOperationsConfiguration;
+import io.yupiik.uship.backbone.johnzon.jsonschema.Schema;
 import io.yupiik.uship.backbone.johnzon.jsonschema.SchemaProcessor;
 import io.yupiik.uship.jsonrpc.core.impl.JsonRpcMethodRegistry;
 import io.yupiik.uship.jsonrpc.core.impl.Registration;
@@ -86,12 +88,34 @@ public class EnhancedJsonRpcMethodRegistry extends JsonRpcMethodRegistry {
                                             final SchemaProcessor.InMemoryCache componentsSchemaProcessorCache,
                                             final Map.Entry<String, JsonRpcMethodRegistration> handler) {
         final var builtIn = super.toRpcMethod(schemaProcessor, componentsSchemaProcessorCache, handler);
-        if (handler.getValue().registration() instanceof JsonLogicRegistration r) {
+        final var registration = handler.getValue().registration();
+        if (registration instanceof JsonLogicRegistration r) {
             builtIn.setTags(r.tags);
-        } else {
-            ofNullable(handler.getValue().registration().clazz())
+        } else if (registration.method() != null) {
+            // @UiMetadata
+            ofNullable(registration.clazz())
                     .map(c -> c.getAnnotation(UiMetadata.class))
                     .ifPresent(metadata -> builtIn.setTags(asTags(metadata)));
+
+            // @UiWidget
+            final var params  = new ArrayList<>(builtIn.getParams() != null ? builtIn.getParams() : List.of());
+            builtIn.setParams(params);
+
+            final var parameters = registration.method().getParameters();
+            for (int i = 0; i < parameters.length; i++) {
+                final var widget = parameters[i].getAnnotation(UiWidget.class);
+                if (widget == null) {
+                    continue;
+                }
+                final var toPatch = params.get(i);
+                params.set(i, new ExtendedValue(
+                        toPatch.getName(),
+                        toPatch.getDescription(),
+                        toPatch.getSchema(),
+                        toPatch.getRequired(),
+                        toPatch.getDeprecated(),
+                        new Ui(widget.value())));
+            }
         }
         return builtIn;
     }
@@ -202,6 +226,49 @@ public class EnhancedJsonRpcMethodRegistry extends JsonRpcMethodRegistry {
                                       final List<OpenRPC.Tag> tags) {
             super(null, null, jsonRpcMethod, JsonValue.class, invoker, parameters, exceptionMappings, documentation);
             this.tags = tags;
+        }
+    }
+
+    public static class Ui {
+        private String widget;
+
+        public Ui() {
+            // no-op
+        }
+
+        public Ui(final String widget) {
+            this.widget = widget;
+        }
+
+        public String getWidget() {
+            return widget;
+        }
+
+        public void setWidget(final String widget) {
+            this.widget = widget;
+        }
+    }
+
+    public static class ExtendedValue extends OpenRPC.Value {
+        private Ui ui;
+
+        public ExtendedValue() {
+            // no-op
+        }
+
+        public ExtendedValue(final String name, final String description,
+                             final Schema schema, final Boolean required,
+                             final Boolean deprecated, final Ui ui) {
+            super(name, description, schema, required, deprecated);
+            this.ui = ui;
+        }
+
+        public Ui getUi() {
+            return ui;
+        }
+
+        public void setUi(final Ui ui) {
+            this.ui = ui;
         }
     }
 }

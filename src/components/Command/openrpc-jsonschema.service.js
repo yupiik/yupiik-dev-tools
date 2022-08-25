@@ -29,4 +29,14 @@ export const parametersToUiSchema = ({
     'ui:order': !method.params ?
         undefined :
         method.params.map(it => it.name), // keep definition order
+    ...(!method.params ?
+        {} :
+        method.params
+            .filter(param => param.ui && param.ui.widget)
+            .reduce((a, i) => ({
+                ...a,
+                [i.name]: {
+                    'ui:widget': i.ui.widget,
+                },
+            }), {})),
 });

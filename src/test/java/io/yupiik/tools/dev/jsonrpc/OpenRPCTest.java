@@ -20,6 +20,10 @@ import io.yupiik.tools.dev.test.DevToolsSupport;
 import io.yupiik.uship.jsonrpc.core.openrpc.OpenRPC;
 import jakarta.inject.Inject;
 import jakarta.json.JsonBuilderFactory;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonValue;
+import jakarta.json.bind.Jsonb;
+import org.apache.johnzon.jsonb.extension.JsonValueReader;
 import org.junit.jupiter.api.Test;
 
 import static java.util.function.Function.identity;
@@ -35,22 +39,40 @@ class OpenRPCTest {
     @Inject
     private JsonBuilderFactory jsonBuilderFactory;
 
+    @Inject
+    private Jsonb jsonb;
+
     @Test
     void validateEnhancedJsonRpcMethodRegistry() {
-        final var spec = client.jsonRpc(
+        final var json = client.jsonRpc(
                 jsonBuilderFactory.createObjectBuilder()
                         .add("jsonrpc", "2.0")
                         .add("method", "openrpc")
                         .build(),
-                OpenRPC.class);
+                JsonObject.class);
+        final var spec = jsonb.fromJson(new JsonValueReader<>(json), OpenRPC.class);
         final var methods = spec.getMethods().stream().collect(toMap(OpenRPC.RpcMethod::getName, identity()));
 
         final var base64Encode = methods.get("base64-encode");
         assertNotNull(base64Encode);
         assertNotNull(base64Encode.getTags());
 
+        // tags are present
         final var tags = base64Encode.getTags().stream().collect(toMap(OpenRPC.Tag::getSummary, OpenRPC.Tag::getName));
-        assertEquals("Base64", tags.get("root_label"));
+        assertEquals("Encoding", tags.get("root_label"));
         assertEquals("base64-", tags.get("command_prefix"));
+
+        // and root widgets are present
+        assertEquals("textarea", json.getJsonArray("methods").stream()
+                .map(JsonValue::asJsonObject)
+                .filter(m -> "http-signature-sign".equals(m.getString("name")))
+                .findFirst()
+                .flatMap(m -> m.getJsonArray("params").stream()
+                        .map(JsonValue::asJsonObject)
+                        .filter(a -> "requestHeaders".equals(a.getString("name")))
+                        .findFirst())
+                .orElseThrow()
+                .getJsonObject("ui")
+                .getString("widget"));
     }
 }

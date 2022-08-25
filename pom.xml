@@ -66,6 +66,19 @@
       </exclusions>
     </dependency>
 
+    <!-- to include in codebase? -->
+    <dependency>
+      <groupId>org.tomitribe</groupId>
+      <artifactId>churchkey</artifactId>
+      <version>0.15</version>
+      <exclusions>
+        <exclusion> <!-- we don't want to bring back the json libs or jwk ones yet -->
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
