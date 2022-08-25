@@ -49,3 +49,9 @@ A `custom-operations.json` can be added to this folder (root of the distribution
   ]
 }
 ----
+
+== TODO
+
+* Auto install java if not there?
+* More operations
+* Register JSON-RPC methods as JsonLogic operations when active
