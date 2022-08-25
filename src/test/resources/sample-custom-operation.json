@@ -1,0 +1,25 @@
+{
+  "jsonLogics": [
+    {
+      "name": "hello-world",
+      "description": "A simple custom operation based on JSON-Logic",
+      "parameters": [
+        {
+          "type": "STRING",
+          "name": "name",
+          "required": true,
+          "documentation": "The name to greet"
+        }
+      ],
+      "jsonLogic": {
+        "cat": [
+          "Hello ",
+          {
+            "var": "name"
+          },
+          "!"
+        ]
+      }
+    }
+  ]
+}

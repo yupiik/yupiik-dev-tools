@@ -1,0 +1,10 @@
+out/
+dist/
+generated/
+.code/
+target
+.idea
+*.iml
+*.ipr
+*.iws
+node_modules

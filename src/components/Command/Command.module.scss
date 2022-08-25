@@ -1,0 +1,28 @@
+.Command {
+    background-color: 'white';
+    padding: '1rem';
+
+    label[for=root-title] {
+        font-size: large;
+        font-weight: bolder;
+    }
+
+    label[for=root-description] {
+        font-style: italic;
+    }
+
+    :global(div.ant-form-item-label) {
+        font-weight: bold;
+    }
+    :global(div[style="width: 0px; height: 24px;"]) {
+        height: auto !important;
+    }
+
+    .Result {
+        margin-top: 1rem;
+
+        pre {
+            background-color: white;
+        }
+    }
+}

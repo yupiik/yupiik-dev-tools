@@ -1,0 +1,11 @@
+= Yupiik Dev Tools
+
+Simple application with a set of developer tools.
+
+== Build
+
+[source,bash]
+----
+npm i
+npm run build:all
+----

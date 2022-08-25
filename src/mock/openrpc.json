@@ -1,0 +1,1839 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "components": {
+            "errors": {},
+            "links": {},
+            "schemas": {
+                "io_yupiik_uship_backbone_johnzon_jsonschema_Schema": {
+                    "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                    "properties": {
+                        "writeOnly": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "nullable": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "$schema": {
+                            "type": "string"
+                        },
+                        "deprecated": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "minLength": {
+                            "nullable": true,
+                            "type": "integer"
+                        },
+                        "pattern": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema_SchemaType",
+                            "enum": [
+                                "integer",
+                                "number",
+                                "string",
+                                "object",
+                                "array",
+                                "bool"
+                            ],
+                            "nullable": true,
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "required": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "example": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "exclusiveMaximum": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "allOf": {
+                            "items": {
+                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "default": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "not": {
+                            "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                            "type": "object"
+                        },
+                        "oneOf": {
+                            "items": {
+                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "maxProperties": {
+                            "nullable": true,
+                            "type": "integer"
+                        },
+                        "exclusiveMinimum": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "definitions": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "multipleOf": {
+                            "nullable": true,
+                            "type": "number"
+                        },
+                        "maxItems": {
+                            "nullable": true,
+                            "type": "integer"
+                        },
+                        "format": {
+                            "type": "string"
+                        },
+                        "anyOf": {
+                            "items": {
+                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "readOnly": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "enum": {
+                            "items": {
+                                "properties": {},
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "minProperties": {
+                            "nullable": true,
+                            "type": "integer"
+                        },
+                        "minItems": {
+                            "nullable": true,
+                            "type": "integer"
+                        },
+                        "uniqueItems": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "maximum": {
+                            "nullable": true,
+                            "type": "number"
+                        },
+                        "additionalProperties": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "items": {
+                            "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                            "type": "object"
+                        },
+                        "minimum": {
+                            "nullable": true,
+                            "type": "number"
+                        },
+                        "$ref": {
+                            "type": "string"
+                        },
+                        "properties": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "maxLength": {
+                            "nullable": true,
+                            "type": "integer"
+                        },
+                        "$id": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC",
+                    "properties": {
+                        "components": {
+                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Components",
+                            "properties": {
+                                "schemas": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "links": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "errors": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "tags": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "servers": {
+                            "items": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                "properties": {
+                                    "summary": {
+                                        "type": "string"
+                                    },
+                                    "variables": {
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "methods": {
+                            "items": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_RpcMethod",
+                                "properties": {
+                                    "summary": {
+                                        "type": "string"
+                                    },
+                                    "paramStructure": {
+                                        "type": "string"
+                                    },
+                                    "deprecated": {
+                                        "nullable": true,
+                                        "type": "boolean"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "params": {
+                                        "items": {
+                                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value",
+                                            "properties": {
+                                                "schema": {
+                                                    "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                    "properties": {
+                                                        "writeOnly": {
+                                                            "nullable": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "nullable": {
+                                                            "nullable": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "$schema": {
+                                                            "type": "string"
+                                                        },
+                                                        "deprecated": {
+                                                            "nullable": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "minLength": {
+                                                            "nullable": true,
+                                                            "type": "integer"
+                                                        },
+                                                        "pattern": {
+                                                            "type": "string"
+                                                        },
+                                                        "description": {
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema_SchemaType",
+                                                            "enum": [
+                                                                "integer",
+                                                                "number",
+                                                                "string",
+                                                                "object",
+                                                                "array",
+                                                                "bool"
+                                                            ],
+                                                            "nullable": true,
+                                                            "type": "string"
+                                                        },
+                                                        "title": {
+                                                            "type": "string"
+                                                        },
+                                                        "required": {
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "example": {
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        },
+                                                        "exclusiveMaximum": {
+                                                            "nullable": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "allOf": {
+                                                            "items": {
+                                                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "default": {
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        },
+                                                        "not": {
+                                                            "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                            "type": "object"
+                                                        },
+                                                        "oneOf": {
+                                                            "items": {
+                                                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "maxProperties": {
+                                                            "nullable": true,
+                                                            "type": "integer"
+                                                        },
+                                                        "exclusiveMinimum": {
+                                                            "nullable": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "definitions": {
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        },
+                                                        "multipleOf": {
+                                                            "nullable": true,
+                                                            "type": "number"
+                                                        },
+                                                        "maxItems": {
+                                                            "nullable": true,
+                                                            "type": "integer"
+                                                        },
+                                                        "format": {
+                                                            "type": "string"
+                                                        },
+                                                        "anyOf": {
+                                                            "items": {
+                                                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "readOnly": {
+                                                            "nullable": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "enum": {
+                                                            "items": {
+                                                                "properties": {},
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "minProperties": {
+                                                            "nullable": true,
+                                                            "type": "integer"
+                                                        },
+                                                        "minItems": {
+                                                            "nullable": true,
+                                                            "type": "integer"
+                                                        },
+                                                        "uniqueItems": {
+                                                            "nullable": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "maximum": {
+                                                            "nullable": true,
+                                                            "type": "number"
+                                                        },
+                                                        "additionalProperties": {
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        },
+                                                        "items": {
+                                                            "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                            "type": "object"
+                                                        },
+                                                        "minimum": {
+                                                            "nullable": true,
+                                                            "type": "number"
+                                                        },
+                                                        "$ref": {
+                                                            "type": "string"
+                                                        },
+                                                        "properties": {
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        },
+                                                        "maxLength": {
+                                                            "nullable": true,
+                                                            "type": "integer"
+                                                        },
+                                                        "$id": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "deprecated": {
+                                                    "nullable": true,
+                                                    "type": "boolean"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "required": {
+                                                    "nullable": true,
+                                                    "type": "boolean"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "tags": {
+                                        "items": {
+                                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Tag",
+                                            "properties": {
+                                                "summary": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "externalDocs": {
+                                                    "items": {
+                                                        "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                                                        "properties": {
+                                                            "description": {
+                                                                "type": "string"
+                                                            },
+                                                            "url": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "result": {
+                                        "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value",
+                                        "type": "object"
+                                    },
+                                    "servers": {
+                                        "items": {
+                                            "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "examples": {
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "links": {
+                                        "items": {
+                                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Link",
+                                            "properties": {
+                                                "summary": {
+                                                    "type": "string"
+                                                },
+                                                "servers": {
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "method": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "params": {
+                                                    "properties": {},
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "externalDocs": {
+                                        "items": {
+                                            "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "errors": {
+                                        "items": {
+                                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ErrorValue",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "integer"
+                                                },
+                                                "data": {
+                                                    "properties": {},
+                                                    "type": "object"
+                                                },
+                                                "message": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "openrpc": {
+                            "type": "string"
+                        },
+                        "info": {
+                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Info",
+                            "properties": {
+                                "license": {
+                                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_License",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "contact": {
+                                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Contact",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "termsOfService": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "version": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Components": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Components",
+                    "properties": {
+                        "schemas": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "links": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "errors": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "tags": {
+                            "properties": {},
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Contact": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Contact",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ErrorValue": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ErrorValue",
+                    "properties": {
+                        "code": {
+                            "type": "integer"
+                        },
+                        "data": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                    "properties": {
+                        "description": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Info": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Info",
+                    "properties": {
+                        "license": {
+                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_License",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "contact": {
+                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Contact",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "termsOfService": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "version": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_License": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_License",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Link": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Link",
+                    "properties": {
+                        "summary": {
+                            "type": "string"
+                        },
+                        "servers": {
+                            "items": {
+                                "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "method": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "params": {
+                            "properties": {},
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_RpcMethod": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_RpcMethod",
+                    "properties": {
+                        "summary": {
+                            "type": "string"
+                        },
+                        "paramStructure": {
+                            "type": "string"
+                        },
+                        "deprecated": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "params": {
+                            "items": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value",
+                                "properties": {
+                                    "schema": {
+                                        "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                        "properties": {
+                                            "writeOnly": {
+                                                "nullable": true,
+                                                "type": "boolean"
+                                            },
+                                            "nullable": {
+                                                "nullable": true,
+                                                "type": "boolean"
+                                            },
+                                            "$schema": {
+                                                "type": "string"
+                                            },
+                                            "deprecated": {
+                                                "nullable": true,
+                                                "type": "boolean"
+                                            },
+                                            "minLength": {
+                                                "nullable": true,
+                                                "type": "integer"
+                                            },
+                                            "pattern": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema_SchemaType",
+                                                "enum": [
+                                                    "integer",
+                                                    "number",
+                                                    "string",
+                                                    "object",
+                                                    "array",
+                                                    "bool"
+                                                ],
+                                                "nullable": true,
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "required": {
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "example": {
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "exclusiveMaximum": {
+                                                "nullable": true,
+                                                "type": "boolean"
+                                            },
+                                            "allOf": {
+                                                "items": {
+                                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "default": {
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "not": {
+                                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                "type": "object"
+                                            },
+                                            "oneOf": {
+                                                "items": {
+                                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "maxProperties": {
+                                                "nullable": true,
+                                                "type": "integer"
+                                            },
+                                            "exclusiveMinimum": {
+                                                "nullable": true,
+                                                "type": "boolean"
+                                            },
+                                            "definitions": {
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "multipleOf": {
+                                                "nullable": true,
+                                                "type": "number"
+                                            },
+                                            "maxItems": {
+                                                "nullable": true,
+                                                "type": "integer"
+                                            },
+                                            "format": {
+                                                "type": "string"
+                                            },
+                                            "anyOf": {
+                                                "items": {
+                                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "readOnly": {
+                                                "nullable": true,
+                                                "type": "boolean"
+                                            },
+                                            "enum": {
+                                                "items": {
+                                                    "properties": {},
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "minProperties": {
+                                                "nullable": true,
+                                                "type": "integer"
+                                            },
+                                            "minItems": {
+                                                "nullable": true,
+                                                "type": "integer"
+                                            },
+                                            "uniqueItems": {
+                                                "nullable": true,
+                                                "type": "boolean"
+                                            },
+                                            "maximum": {
+                                                "nullable": true,
+                                                "type": "number"
+                                            },
+                                            "additionalProperties": {
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "items": {
+                                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                "type": "object"
+                                            },
+                                            "minimum": {
+                                                "nullable": true,
+                                                "type": "number"
+                                            },
+                                            "$ref": {
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "maxLength": {
+                                                "nullable": true,
+                                                "type": "integer"
+                                            },
+                                            "$id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "deprecated": {
+                                        "nullable": true,
+                                        "type": "boolean"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "required": {
+                                        "nullable": true,
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "tags": {
+                            "items": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Tag",
+                                "properties": {
+                                    "summary": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "externalDocs": {
+                                        "items": {
+                                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                                            "properties": {
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "url": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "result": {
+                            "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value",
+                            "type": "object"
+                        },
+                        "servers": {
+                            "items": {
+                                "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "examples": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "links": {
+                            "items": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Link",
+                                "properties": {
+                                    "summary": {
+                                        "type": "string"
+                                    },
+                                    "servers": {
+                                        "items": {
+                                            "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "method": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "params": {
+                                        "properties": {},
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "externalDocs": {
+                            "items": {
+                                "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "errors": {
+                            "items": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ErrorValue",
+                                "properties": {
+                                    "code": {
+                                        "type": "integer"
+                                    },
+                                    "data": {
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                    "properties": {
+                        "summary": {
+                            "type": "string"
+                        },
+                        "variables": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Tag": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Tag",
+                    "properties": {
+                        "summary": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "externalDocs": {
+                            "items": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value": {
+                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value",
+                    "properties": {
+                        "schema": {
+                            "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                            "properties": {
+                                "writeOnly": {
+                                    "nullable": true,
+                                    "type": "boolean"
+                                },
+                                "nullable": {
+                                    "nullable": true,
+                                    "type": "boolean"
+                                },
+                                "$schema": {
+                                    "type": "string"
+                                },
+                                "deprecated": {
+                                    "nullable": true,
+                                    "type": "boolean"
+                                },
+                                "minLength": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                },
+                                "pattern": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema_SchemaType",
+                                    "enum": [
+                                        "integer",
+                                        "number",
+                                        "string",
+                                        "object",
+                                        "array",
+                                        "bool"
+                                    ],
+                                    "nullable": true,
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "required": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                "example": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "exclusiveMaximum": {
+                                    "nullable": true,
+                                    "type": "boolean"
+                                },
+                                "allOf": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "default": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "not": {
+                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                    "type": "object"
+                                },
+                                "oneOf": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "maxProperties": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                },
+                                "exclusiveMinimum": {
+                                    "nullable": true,
+                                    "type": "boolean"
+                                },
+                                "definitions": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "multipleOf": {
+                                    "nullable": true,
+                                    "type": "number"
+                                },
+                                "maxItems": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                },
+                                "format": {
+                                    "type": "string"
+                                },
+                                "anyOf": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "readOnly": {
+                                    "nullable": true,
+                                    "type": "boolean"
+                                },
+                                "enum": {
+                                    "items": {
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "minProperties": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                },
+                                "minItems": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                },
+                                "uniqueItems": {
+                                    "nullable": true,
+                                    "type": "boolean"
+                                },
+                                "maximum": {
+                                    "nullable": true,
+                                    "type": "number"
+                                },
+                                "additionalProperties": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "items": {
+                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                    "type": "object"
+                                },
+                                "minimum": {
+                                    "nullable": true,
+                                    "type": "number"
+                                },
+                                "$ref": {
+                                    "type": "string"
+                                },
+                                "properties": {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "maxLength": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                },
+                                "$id": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "deprecated": {
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "required": {
+                            "nullable": true,
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "tags": {}
+        },
+        "info": {
+            "title": "JSON-RPC",
+            "version": "1.0"
+        },
+        "methods": [
+            {
+                "description": "Enables to decode a base64 string.",
+                "errors": [],
+                "externalDocs": [],
+                "links": [],
+                "name": "base64-decode",
+                "paramStructure": "either",
+                "params": [
+                    {
+                        "description": "Base64 mode (URL, URL_NO_PADDING, DEFAULT)",
+                        "name": "mode",
+                        "required": false,
+                        "schema": {
+                            "$id": "io_yupiik_tools_dev_jsonrpc_Base64_Base64DecodingMode",
+                            "enum": [
+                                "MIME",
+                                "URL",
+                                "DEFAULT"
+                            ],
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Value to decode",
+                        "name": "value",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "result": {
+                    "name": "base64-decode__result",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                "summary": "Enables to decode a base64 string.",
+                "tags": [
+                    {
+                        "name": "Base64",
+                        "summary": "root_label"
+                    },
+                    {
+                        "name": "base64-",
+                        "summary": "command_prefix"
+                    }
+                ]
+            },
+            {
+                "description": "Enables to encode a string in base64.",
+                "errors": [],
+                "externalDocs": [],
+                "links": [],
+                "name": "base64-encode",
+                "paramStructure": "either",
+                "params": [
+                    {
+                        "description": "Base64 mode (URL, URL_NO_PADDING, DEFAULT)",
+                        "name": "mode",
+                        "required": false,
+                        "schema": {
+                            "$id": "io_yupiik_tools_dev_jsonrpc_Base64_Base64EncodingMode",
+                            "enum": [
+                                "MIME",
+                                "MIME_NO_PADDING",
+                                "URL",
+                                "URL_NO_PADDING",
+                                "DEFAULT"
+                            ],
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Value to encode",
+                        "name": "value",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "result": {
+                    "name": "base64-encode__result",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                "summary": "Enables to encode a string in base64.",
+                "tags": [
+                    {
+                        "name": "Base64",
+                        "summary": "root_label"
+                    },
+                    {
+                        "name": "base64-",
+                        "summary": "command_prefix"
+                    }
+                ]
+            },
+            {
+                "description": "Returns the Open-RPC specification.",
+                "errors": [],
+                "externalDocs": [],
+                "links": [],
+                "name": "openrpc",
+                "paramStructure": "either",
+                "params": [],
+                "result": {
+                    "name": "openrpc__result",
+                    "schema": {
+                        "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC",
+                        "properties": {
+                            "components": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Components",
+                                "properties": {
+                                    "schemas": {
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "links": {
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "errors": {
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "tags": {
+                                        "properties": {},
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "servers": {
+                                "items": {
+                                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                    "properties": {
+                                        "summary": {
+                                            "type": "string"
+                                        },
+                                        "variables": {
+                                            "properties": {},
+                                            "type": "object"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "methods": {
+                                "items": {
+                                    "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_RpcMethod",
+                                    "properties": {
+                                        "summary": {
+                                            "type": "string"
+                                        },
+                                        "paramStructure": {
+                                            "type": "string"
+                                        },
+                                        "deprecated": {
+                                            "nullable": true,
+                                            "type": "boolean"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "params": {
+                                            "items": {
+                                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value",
+                                                "properties": {
+                                                    "schema": {
+                                                        "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                        "properties": {
+                                                            "writeOnly": {
+                                                                "nullable": true,
+                                                                "type": "boolean"
+                                                            },
+                                                            "nullable": {
+                                                                "nullable": true,
+                                                                "type": "boolean"
+                                                            },
+                                                            "$schema": {
+                                                                "type": "string"
+                                                            },
+                                                            "deprecated": {
+                                                                "nullable": true,
+                                                                "type": "boolean"
+                                                            },
+                                                            "minLength": {
+                                                                "nullable": true,
+                                                                "type": "integer"
+                                                            },
+                                                            "pattern": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            },
+                                                            "type": {
+                                                                "$id": "io_yupiik_uship_backbone_johnzon_jsonschema_Schema_SchemaType",
+                                                                "enum": [
+                                                                    "integer",
+                                                                    "number",
+                                                                    "string",
+                                                                    "object",
+                                                                    "array",
+                                                                    "bool"
+                                                                ],
+                                                                "nullable": true,
+                                                                "type": "string"
+                                                            },
+                                                            "title": {
+                                                                "type": "string"
+                                                            },
+                                                            "required": {
+                                                                "items": {
+                                                                    "type": "string"
+                                                                },
+                                                                "type": "array"
+                                                            },
+                                                            "example": {
+                                                                "properties": {},
+                                                                "type": "object"
+                                                            },
+                                                            "exclusiveMaximum": {
+                                                                "nullable": true,
+                                                                "type": "boolean"
+                                                            },
+                                                            "allOf": {
+                                                                "items": {
+                                                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                    "type": "object"
+                                                                },
+                                                                "type": "array"
+                                                            },
+                                                            "default": {
+                                                                "properties": {},
+                                                                "type": "object"
+                                                            },
+                                                            "not": {
+                                                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                "type": "object"
+                                                            },
+                                                            "oneOf": {
+                                                                "items": {
+                                                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                    "type": "object"
+                                                                },
+                                                                "type": "array"
+                                                            },
+                                                            "maxProperties": {
+                                                                "nullable": true,
+                                                                "type": "integer"
+                                                            },
+                                                            "exclusiveMinimum": {
+                                                                "nullable": true,
+                                                                "type": "boolean"
+                                                            },
+                                                            "definitions": {
+                                                                "properties": {},
+                                                                "type": "object"
+                                                            },
+                                                            "multipleOf": {
+                                                                "nullable": true,
+                                                                "type": "number"
+                                                            },
+                                                            "maxItems": {
+                                                                "nullable": true,
+                                                                "type": "integer"
+                                                            },
+                                                            "format": {
+                                                                "type": "string"
+                                                            },
+                                                            "anyOf": {
+                                                                "items": {
+                                                                    "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                    "type": "object"
+                                                                },
+                                                                "type": "array"
+                                                            },
+                                                            "readOnly": {
+                                                                "nullable": true,
+                                                                "type": "boolean"
+                                                            },
+                                                            "enum": {
+                                                                "items": {
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                },
+                                                                "type": "array"
+                                                            },
+                                                            "minProperties": {
+                                                                "nullable": true,
+                                                                "type": "integer"
+                                                            },
+                                                            "minItems": {
+                                                                "nullable": true,
+                                                                "type": "integer"
+                                                            },
+                                                            "uniqueItems": {
+                                                                "nullable": true,
+                                                                "type": "boolean"
+                                                            },
+                                                            "maximum": {
+                                                                "nullable": true,
+                                                                "type": "number"
+                                                            },
+                                                            "additionalProperties": {
+                                                                "properties": {},
+                                                                "type": "object"
+                                                            },
+                                                            "items": {
+                                                                "$ref": "#/components/schemas/io_yupiik_uship_backbone_johnzon_jsonschema_Schema",
+                                                                "type": "object"
+                                                            },
+                                                            "minimum": {
+                                                                "nullable": true,
+                                                                "type": "number"
+                                                            },
+                                                            "$ref": {
+                                                                "type": "string"
+                                                            },
+                                                            "properties": {
+                                                                "properties": {},
+                                                                "type": "object"
+                                                            },
+                                                            "maxLength": {
+                                                                "nullable": true,
+                                                                "type": "integer"
+                                                            },
+                                                            "$id": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "deprecated": {
+                                                        "nullable": true,
+                                                        "type": "boolean"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "required": {
+                                                        "nullable": true,
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "tags": {
+                                            "items": {
+                                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Tag",
+                                                "properties": {
+                                                    "summary": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "externalDocs": {
+                                                        "items": {
+                                                            "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                                                            "properties": {
+                                                                "description": {
+                                                                    "type": "string"
+                                                                },
+                                                                "url": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        },
+                                                        "type": "array"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "result": {
+                                            "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Value",
+                                            "type": "object"
+                                        },
+                                        "servers": {
+                                            "items": {
+                                                "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "examples": {
+                                            "properties": {},
+                                            "type": "object"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "links": {
+                                            "items": {
+                                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Link",
+                                                "properties": {
+                                                    "summary": {
+                                                        "type": "string"
+                                                    },
+                                                    "servers": {
+                                                        "items": {
+                                                            "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Server",
+                                                            "type": "object"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    "method": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "params": {
+                                                        "properties": {},
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "externalDocs": {
+                                            "items": {
+                                                "$ref": "#/components/schemas/io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ExternalDoc",
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "errors": {
+                                            "items": {
+                                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_ErrorValue",
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "integer"
+                                                    },
+                                                    "data": {
+                                                        "properties": {},
+                                                        "type": "object"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "openrpc": {
+                                "type": "string"
+                            },
+                            "info": {
+                                "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Info",
+                                "properties": {
+                                    "license": {
+                                        "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_License",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "contact": {
+                                        "$id": "io_yupiik_uship_jsonrpc_core_openrpc_OpenRPC_Contact",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "termsOfService": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "version": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "summary": "Returns the Open-RPC specification.",
+                "tags": []
+            }
+        ],
+        "openrpc": "1.2.4",
+        "servers": [
+            {
+                "name": "api",
+                "summary": "JSON-RPC API",
+                "url": "http://localhost:8080/jsonrpc",
+                "variables": {}
+            }
+        ]
+    }
+}
