@@ -24,6 +24,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.json.JsonReaderFactory;
+import jakarta.json.JsonValue;
 import jakarta.json.JsonWriterFactory;
 import jakarta.json.spi.JsonProvider;
 import jakarta.json.stream.JsonGenerator;
@@ -59,5 +60,12 @@ public class Json {
             writer.write(reader.readValue());
         }
         return out.toString();
+    }
+
+    @JsonRpcMethod(name = "json-unescape", documentation = "Unescape an escaped JSON string.")
+    public JsonValue unescape(@JsonRpcParam(documentation = "JSON to format.", required = true) @UiWidget(TEXTAREA) final String value) {
+        try (final var reader = readers.createReader(new StringReader(!value.startsWith("\"") && !value.endsWith("\"") ? '"' + value + '"' : value))) {
+            return reader.readValue();
+        }
     }
 }

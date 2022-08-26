@@ -20,7 +20,6 @@ import io.yupiik.tools.dev.test.DevToolsSupport;
 import jakarta.inject.Inject;
 import jakarta.json.JsonBuilderFactory;
 import jakarta.json.JsonString;
-import jakarta.json.JsonValue;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
