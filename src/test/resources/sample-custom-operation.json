@@ -20,6 +20,38 @@
           "!"
         ]
       }
+    },
+    {
+      "name": "custom-base64",
+      "description": "A simple custom operation based on JSON-Logic and JSON-RPC",
+      "parameters": [
+        {
+          "type": "STRING",
+          "name": "name",
+          "required": true,
+          "documentation": "The name to convert"
+        }
+      ],
+      "jsonLogic": {
+        "jsonrpc": {
+          "jsonrpc": "2.0",
+          "method": "base64-encode",
+          "params": {
+            "mode": "DEFAULT",
+            "value": {
+              "$jsonLogic": {
+                "cat": [
+                  "Hello ",
+                  {
+                    "var": "name"
+                  },
+                  "!"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }

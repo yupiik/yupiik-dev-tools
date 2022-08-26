@@ -22,15 +22,20 @@ import io.yupiik.uship.backbone.johnzon.jsonschema.Schema;
 import io.yupiik.uship.backbone.johnzon.jsonschema.SchemaProcessor;
 import io.yupiik.uship.jsonrpc.core.impl.JsonRpcMethodRegistry;
 import io.yupiik.uship.jsonrpc.core.impl.Registration;
+import io.yupiik.uship.jsonrpc.core.lang.Tuple2;
 import io.yupiik.uship.jsonrpc.core.openrpc.OpenRPC;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Specializes;
 import jakarta.inject.Inject;
+import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonBuilderFactory;
+import jakarta.json.JsonObjectBuilder;
+import jakarta.json.JsonStructure;
 import jakarta.json.JsonValue;
 import jakarta.json.bind.Jsonb;
 import org.apache.johnzon.jsonlogic.JohnzonJsonLogic;
+import org.apache.johnzon.jsonlogic.spi.AsyncOperator;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,7 +47,10 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.logging.Logger;
+import java.util.stream.Collector;
 
+import static java.util.Map.entry;
+import static java.util.Objects.requireNonNull;
 import static java.util.Optional.ofNullable;
 
 @Specializes
@@ -98,7 +106,7 @@ public class EnhancedJsonRpcMethodRegistry extends JsonRpcMethodRegistry {
                     .ifPresent(metadata -> builtIn.setTags(asTags(metadata)));
 
             // @UiWidget
-            final var params  = new ArrayList<>(builtIn.getParams() != null ? builtIn.getParams() : List.of());
+            final var params = new ArrayList<>(builtIn.getParams() != null ? builtIn.getParams() : List.of());
             builtIn.setParams(params);
 
             final var parameters = registration.method().getParameters();
@@ -121,11 +129,7 @@ public class EnhancedJsonRpcMethodRegistry extends JsonRpcMethodRegistry {
     }
 
     private void registerCustomOperations() {
-        jsonLogic = new JohnzonJsonLogic()
-                .registerDefaultOperators()
-                .registerExtensionsOperators();
-        // todo: add other operators
-
+        jsonLogic = createJsonLogic();
         try {
             final var customOperationsModel = jsonb.fromJson(
                     Files.readString(configuration.getLocation()),
@@ -137,6 +141,57 @@ public class EnhancedJsonRpcMethodRegistry extends JsonRpcMethodRegistry {
         } catch (final IOException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    // todo: add other operators as needed
+    private JohnzonJsonLogic createJsonLogic() {
+        return new JohnzonJsonLogic()
+                .registerDefaultOperators()
+                .registerExtensionsOperators()
+                .registerOperator("jsonrpc", (AsyncOperator) (logic, spec, dataContext) -> {
+                    final var conf = spec.asJsonObject();
+                    final var method = conf.getString("method");
+                    final var executor = requireNonNull(getHandlers().get(method)).executor();
+                    final var params = evaluate(logic, conf.get("params"), dataContext);
+                    return executor.apply(params, new Tuple2<>(null, null));
+                });
+    }
+
+    private JsonValue evaluateParameter(final JohnzonJsonLogic logic, final JsonValue params, final JsonValue data) {
+        return switch (params.getValueType()) {
+            case OBJECT -> {
+                final var jsonLogic = params.asJsonObject().get("$jsonLogic");
+                if (jsonLogic != null) {
+                    yield logic.apply(jsonLogic, data);
+                }
+                yield params;
+            }
+            default -> params;
+        };
+    }
+
+    private JsonStructure evaluate(final JohnzonJsonLogic logic, final JsonValue params, final JsonValue dataContext) {
+        if (params == null) {
+            return JsonValue.EMPTY_JSON_OBJECT;
+        }
+        return switch (params.getValueType()) {
+            case NULL, NUMBER, STRING, TRUE, FALSE ->
+                    throw new IllegalStateException("Unsupported parameter: " + params);
+            case ARRAY -> params.asJsonArray().stream()
+                    .map(it -> evaluateParameter(logic, it, dataContext))
+                    .collect(Collector.of(
+                            jsonBuilderFactory::createArrayBuilder,
+                            JsonArrayBuilder::add,
+                            JsonArrayBuilder::addAll,
+                            JsonArrayBuilder::build));
+            case OBJECT -> params.asJsonObject().entrySet().stream()
+                    .map(it -> entry(it.getKey(), evaluateParameter(logic, it.getValue(), dataContext)))
+                    .collect(Collector.of(
+                            () -> jsonBuilderFactory.createObjectBuilder(),
+                            (a, i) -> a.add(i.getKey(), i.getValue()),
+                            JsonObjectBuilder::addAll,
+                            JsonObjectBuilder::build));
+        };
     }
 
     private void registerJsonLogic(final JsonLogicOperation jsonLogicOperation) {

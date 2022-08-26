@@ -50,6 +50,66 @@ A `custom-operations.json` can be added to this folder (root of the distribution
 }
 ----
 
+It is possible to reuse a JSON-RPC method in a JSON-Logic flow:
+
+[source,json]
+----
+{
+  "name": "custom-base64",
+  "description": "A simple custom operation based on JSON-Logic and JSON-RPC",
+  "parameters": [],
+  "jsonLogic": {
+    "jsonrpc": {
+      "jsonrpc": "2.0",
+      "method": "base64-encode",
+      "params": {
+        "mode": "DEFAULT",
+        "value": "my text"
+      }
+    }
+  }
+}
+----
+
+But it becomes useful when you combine with it custom JSON-Logic parameter (standard parameters having a wrapper `$jsonlogic` containing the JSON-Logic to evaluate against the parameters context):
+
+[source,json]
+----
+{
+  "name": "custom-base64",
+  "description": "A simple custom operation based on JSON-Logic and JSON-RPC",
+  "parameters": [
+    {
+      "type": "STRING",
+      "name": "name",
+      "required": true,
+      "documentation": "The name to convert"
+    }
+  ],
+  "jsonLogic": {
+    "jsonrpc": {
+      "jsonrpc": "2.0",
+      "method": "base64-encode",
+      "params": {
+        "mode": "DEFAULT",
+        "value": {
+          "$jsonLogic": {
+            "cat": [
+              "Hello ",
+              {
+                "var": "name"
+              },
+              "!"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+----
+In this last snippet, you will compute the base64 of the text `Hello <parameter.name>!` string.
+
 == TODO
 
 * Auto install java if not there?

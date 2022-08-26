@@ -23,6 +23,9 @@ import jakarta.json.JsonString;
 import jakarta.json.JsonValue;
 import org.junit.jupiter.api.Test;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DevToolsSupport
@@ -44,5 +47,18 @@ class JsonLogicOperationsTest {
                         .build(),
                 JsonString.class);
         assertEquals("Hello world!", spec.getString());
+    }
+
+    @Test
+    void reuseJsonRpc() {
+        final var spec = client.jsonRpc(
+                jsonBuilderFactory.createObjectBuilder()
+                        .add("jsonrpc", "2.0")
+                        .add("method", "custom-base64")
+                        .add("params", jsonBuilderFactory.createObjectBuilder()
+                                .add("name", "world"))
+                        .build(),
+                JsonString.class);
+        assertEquals(Base64.getEncoder().encodeToString("Hello world!".getBytes(StandardCharsets.UTF_8)), spec.getString());
     }
 }
