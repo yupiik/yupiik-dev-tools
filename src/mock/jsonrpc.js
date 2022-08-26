@@ -12,6 +12,49 @@ const MOCKS = {
             message: 'Invalid base64',
         },
     }),
+    'custom-widget': JSON.stringify({
+        jsonrpc: '2.0',
+        result: {
+            ui: {
+                type: 'div',
+                props: {
+                    className: 'custom-widget-wrapper',
+                },
+                children: [
+                    {
+                        type: 'div',
+                        props: {
+                            className: 'custom-widget-header'
+                        },
+                        children: [
+                            { type: 'h2', props: {}, children: ['Header'] },
+                            { $eval: 'header' },
+                        ],
+                    },
+                    {
+                        type: 'div',
+                        props: {
+                            className: 'custom-widget-payload'
+                        },
+                        children: [
+                            { type: 'h2', props: {}, children: ['Payload'] },
+                            { $eval: 'payload' },
+                        ],
+                    }
+                ],
+            },
+            data: {
+                header: {
+                    alg: 'rs256',
+                    kid: 'the_key'
+                },
+                payload: {
+                    iss: 'http://foo',
+                    sub: 'The Name',
+                },
+            },
+        },
+    }),
     openrpc: JSON.stringify(openrpc),
     error: JSON.stringify({
         jsonrpc: '2.0',

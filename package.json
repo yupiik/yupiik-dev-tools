@@ -48,7 +48,8 @@
     "live-server": "^1.2.2",
     "prettier": "^2.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "lodash": "^4.17.21"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",

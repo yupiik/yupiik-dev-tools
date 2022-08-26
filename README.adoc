@@ -21,6 +21,8 @@ cd out/yupiik-dev-tools-linux-x64/
 IMPORTANT: it requires Java 17 to run the backend. If not installed, `java.setup.js` will automatically install it at first start.
 If you already have Java 17 install, ensure to set properly your `JAVA_HOME` environment variable before running `yupiik-dev-tools` to reuse it.
 
+== Custom Operations
+
 A `custom-operations.json` can be added to this folder (root of the distribution) to define custom JSON-Logic operations:
 
 [source,json]
@@ -112,8 +114,49 @@ But it becomes useful when you combine with it custom JSON-Logic parameter (stan
 ----
 In this last snippet, you will compute the base64 of the text `Hello <parameter.name>!` string.
 
-== TODO
+== Format the returned data
 
-* Auto install java if not there?
-* More operations
-* Enable returned value to define the UI based on JSON
+Returned data are by default rendered as a `code` block JSON formatted.
+If you want to refine the way it is formatted you can use a JSON describing the react tree.
+For the UI to understand it, the result must have an `ui` and a `data` attributes.
+`ui` attribute is the react graph in JSON and `data` the evaluable data (actual result).
+The `data` can be evaluated in react children using `{$eval:'<path to attribute to evaluate>'}`.
+
+[source,js]
+----
+{
+    ui: {
+        type: 'div',
+        props: {
+            className: 'custom-widget-wrapper',
+        },
+        children: [
+            {
+                type: 'div',
+                props: {
+                    className: 'custom-widget-header'
+                },
+                children: [
+                    { type: 'h2', props: {}, children: ['Header'] },
+                    { type: 'p', props: {}, children: ['Some description.'] },
+                ],
+            },
+            {
+                type: 'div',
+                props: {
+                    className: 'custom-widget-data'
+                },
+                children: [
+                    { type: 'h2', props: {}, children: ['Something'] },
+                    { $eval: 'value1.something' },
+                ],
+            }
+        ],
+    },
+    data: {
+        value1: {
+            something: "..."
+        }
+    },
+}
+----

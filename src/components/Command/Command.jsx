@@ -1,9 +1,44 @@
 import Form from '@rjsf/antd';
-import { Alert, Skeleton } from 'antd';
-import React, { useEffect, useMemo, useState } from 'react';
+import * as antd from 'antd';
+import get from 'lodash/get';
+import React, { createElement, useEffect, useMemo, useState } from 'react';
 import { useJsonRpc } from '../../hooks/useJsonRpc';
 import css from './Command.module.scss';
 import { parametersToJsonSchema, parametersToUiSchema } from './openrpc-jsonschema.service';
+
+const { Alert, Skeleton } = antd;
+
+const doEval = (spec, data) => {
+    if (spec.$eval) {
+        return get(data, spec.$eval);
+    }
+    return spec;
+};
+
+const renderCustomUi = (spec, data) => {
+    if (typeof spec === 'string') {
+        return spec;
+    }
+    if (spec.type && spec.props) {
+        const component = spec.type.startsWith('antd.') ? antd[spec.type.substring('antd.'.length)] : spec.type;
+        return createElement(
+            component,
+            !spec.props ? undefined : Object.keys(spec.props)
+                .reduce((a, i) => ({ ...a, [i]: doEval(spec.props[i], data) }), {}),
+            !spec.children ? undefined : spec.children
+                .map(it => doEval(it, { ...data, $item: it }))
+                .map(it => renderCustomUi(it, { ...data, $item: it })));
+    }
+    return (<ObjectRenderer data={spec} />);
+};
+
+const ObjectRenderer = ({ data }) => (
+    <div>
+        <pre>
+            <code>{typeof data === 'string' ? data : JSON.stringify(data, null, 2)}</code>
+        </pre>
+    </div>
+);
 
 const JsonResult = ({
     request,
@@ -22,12 +57,12 @@ const JsonResult = ({
             />
         )
     }
+
+    if (data && data.ui && data.data) {
+        return renderCustomUi(data.ui, data.data);
+    }
     return (
-        <div>
-            <pre>
-                <code>{typeof data === 'string' ? data : JSON.stringify(data, null, 2)}</code>
-            </pre>
-        </div>
+        <ObjectRenderer data={data} />
     )
 };
 

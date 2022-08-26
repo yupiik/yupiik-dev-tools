@@ -1295,6 +1295,32 @@
         },
         "methods": [
             {
+                "description": "Returns a custom widget.",
+                "errors": [],
+                "externalDocs": [],
+                "links": [],
+                "name": "custom-widget",
+                "paramStructure": "either",
+                "params": [],
+                "result": {
+                    "name": "custom-widget__result",
+                    "schema": {
+                        "type": "object"
+                    }
+                },
+                "summary": "Returns a custom widget.",
+                "tags": [
+                    {
+                        "name": "Widget",
+                        "summary": "root_label"
+                    },
+                    {
+                        "name": "custom-",
+                        "summary": "command_prefix"
+                    }
+                ]
+            },
+            {
                 "description": "Enables to decode a base64 string.",
                 "errors": [],
                 "externalDocs": [],
