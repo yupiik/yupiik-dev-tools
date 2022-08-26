@@ -8,3 +8,4 @@ target
 *.ipr
 *.iws
 node_modules
+.vscode

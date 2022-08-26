@@ -10,7 +10,6 @@ npm i
 npm run build:all
 ----
 
-
 Then you can run the application using (ensure to hava Java >= 17 in your path):
 
 [source,bash]
@@ -18,6 +17,9 @@ Then you can run the application using (ensure to hava Java >= 17 in your path):
 cd out/yupiik-dev-tools-linux-x64/
 ./yupiik-dev-tools
 ----
+
+IMPORTANT: it requires Java 17 to run the backend. If not installed, `java.setup.js` will automatically install it at first start.
+If you already have Java 17 install, ensure to set properly your `JAVA_HOME` environment variable before running `yupiik-dev-tools` to reuse it.
 
 A `custom-operations.json` can be added to this folder (root of the distribution) to define custom JSON-Logic operations:
 

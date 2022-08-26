@@ -51,7 +51,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "unzipper": "^0.10.11"
   },
   "config": {
     "forge": {
@@ -65,7 +66,6 @@
           "package-lock.json",
           "pom.xml",
           "README.adoc",
-          "node_modules",
           "target/apidocs",
           "target/generated-sources",
           "target/generated-test-sources",

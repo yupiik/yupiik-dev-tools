@@ -3,10 +3,14 @@ const path = require('path');
 const fs = require('fs');
 const os = require('os');
 const { app, BrowserWindow } = require('electron');
+const setupJava = require('./java.setup');
 
 let $yupiikDevTool = {};
 
-const startServer = () => { // todo: support a graalvm version which would be lighter?
+const startServer = async () => { // todo: support a graalvm version which would be lighter?
+  const javaExec = await setupJava();
+  console.log(`[INFO] Using java=${javaExec}`);
+
   const base = path.join(__dirname, 'target');
   const sep = process.platform === 'win32' ? ';' : ':';
   const dependency = path.join(base, 'dependency');
@@ -25,7 +29,7 @@ const startServer = () => { // todo: support a graalvm version which would be li
   ];
   return new Promise((done, failed) => {
     let port = -1;
-    const java = spawn('java', args);
+    const java = spawn(javaExec.toString(), args);
     process.on('exit', () => {
       try {
         java.kill();
@@ -51,7 +55,9 @@ const startServer = () => { // todo: support a graalvm version which would be li
 };
 
 const createWindow = () => {
-  $yupiikDevTool.java = $yupiikDevTool.java || startServer(); // todo: enhance sync with loadFile
+  if (!$yupiikDevTool.java) {
+    $yupiikDevTool.java = startServer();
+  }
 
   const defaultOptions = {
     width: 800,
@@ -81,12 +87,12 @@ const createWindow = () => {
     .catch(() => new BrowserWindow(defaultOptions).loadFile('dist/index.html'));
 };
 
-app.whenReady().then(() => {
-  createWindow();
+app.whenReady().then(async () => {
+  await createWindow();
 
-  app.on('activate', () => {
+  app.on('activate', async () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
+      await createWindow();
     }
   });
 });
