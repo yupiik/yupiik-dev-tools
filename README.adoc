@@ -116,3 +116,4 @@ In this last snippet, you will compute the base64 of the text `Hello <parameter.
 
 * Auto install java if not there?
 * More operations
+* Enable returned value to define the UI based on JSON

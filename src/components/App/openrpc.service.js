@@ -1,3 +1,21 @@
+const formatName = (prefix, name) => {
+    let out = '';
+    let up = true;
+    for (let i = 0; i < name.length; i += 1) {
+        const c = name.charAt(i);
+        if (up) {
+            out += c.toUpperCase();
+            up = false;
+        } else if (c === '-') {
+            up = true;
+            out += ' ';
+        } else {
+            out += c;
+        }
+    }
+    return out.substring(0, 1).toUpperCase() + out.substring(1);
+};
+
 const createMenuItems = methods => {
     const byGroup = methods
         .filter(it => it.tags && it.tags.length > 0) // root_label and command_prefix summary values in current setup
@@ -25,13 +43,10 @@ const createMenuItems = methods => {
                 key: label,
                 label,
                 icon: undefined, // TBD
-                children: byGroup[label].map(item => {
-                    const shortName = item.method.name.substring(item.$metadata.command_prefix.length);
-                    return {
-                        key: item.method.name,
-                        label: shortName.substring(0, 1).toUpperCase() + shortName.substring(1),
-                    };
-                }),
+                children: byGroup[label].map(item => ({
+                    key: item.method.name,
+                    label: formatName(item.$metadata.command_prefix.length, item.method.name),
+                })),
             })),
     ];
 }
