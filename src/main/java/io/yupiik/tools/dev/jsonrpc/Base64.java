@@ -44,7 +44,7 @@ public class Base64 {
     }
 
     @JsonRpcMethod(name = "base64-decode", documentation = "Enables to decode a base64 string.")
-    public String encode(@JsonRpcParam(documentation = "Base64 mode (URL, URL_NO_PADDING, DEFAULT)") final Base64DecodingMode mode,
+    public String decode(@JsonRpcParam(documentation = "Base64 mode (URL, URL_NO_PADDING, DEFAULT)") final Base64DecodingMode mode,
                          @JsonRpcParam(documentation = "Value to decode", required = true) final String value) {
         return switch (ofNullable(mode).orElse(Base64DecodingMode.DEFAULT)) {
             case DEFAULT -> new String(java.util.Base64.getDecoder().decode(value), StandardCharsets.UTF_8);
