@@ -26,6 +26,7 @@ import io.yupiik.uship.jsonrpc.core.lang.Tuple2;
 import io.yupiik.uship.jsonrpc.core.openrpc.OpenRPC;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.Specializes;
 import jakarta.inject.Inject;
 import jakarta.json.JsonArrayBuilder;
@@ -68,7 +69,13 @@ public class EnhancedJsonRpcMethodRegistry extends JsonRpcMethodRegistry {
     private JsonBuilderFactory jsonBuilderFactory;
 
     private JohnzonJsonLogic jsonLogic;
+
     private final Collection<Unregisterable> releasables = new ArrayList<>();
+
+    @Produces
+    public JohnzonJsonLogic jsonLogic() {
+        return jsonLogic;
+    }
 
     @PreDestroy
     private void destroy() {
@@ -154,6 +161,25 @@ public class EnhancedJsonRpcMethodRegistry extends JsonRpcMethodRegistry {
                     final var executor = requireNonNull(getHandlers().get(method)).executor();
                     final var params = evaluate(logic, conf.get("params"), dataContext);
                     return executor.apply(params, new Tuple2<>(null, null));
+                })
+                .registerOperator("sequence", (logic, spec, data) -> {
+                    final var operations = spec.asJsonObject().getJsonArray("operations");
+                    var out = data;
+                    var context = data;
+
+                    for (final var op : operations) {
+                        final var opSpec = op.asJsonObject();
+                        final var resultName = opSpec.getString("resultName");
+                        final var logicSpec = opSpec.getJsonObject("jsonLogic");
+                        out = logic.apply(logicSpec, context);
+                        context = jsonBuilderFactory.createObjectBuilder(context.getValueType() == JsonValue.ValueType.OBJECT ?
+                                        context.asJsonObject() :
+                                        jsonBuilderFactory.createObjectBuilder().add("source", context).build())
+                                .add(resultName, out)
+                                .build();
+                    }
+
+                    return out;
                 });
     }
 
